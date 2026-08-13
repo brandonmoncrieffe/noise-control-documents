@@ -1,0 +1,111 @@
+# encoding: utf-8
+# 2026 R1
+SetScriptVersion(Version="26.1.174")
+system1 = GetSystem(Name="SYS")
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+model1.Exit()
+template1 = GetTemplate(
+    TemplateName="Harmonic Acoustics",
+    Solver="ANSYS")
+system2 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+geometryComponent1 = system2.GetComponent(Name="Geometry")
+geometryComponent2 = system1.GetComponent(Name="Geometry")
+geometryComponent1.ReplaceWithShare(
+    TargetSystem=system2,
+    ComponentToShare=geometryComponent2,
+    SourceSystem=system1)
+modelComponent1 = system2.GetComponent(Name="Model")
+modelComponent1.Refresh()
+setupComponent1 = system2.GetComponent(Name="Setup")
+setupComponent1.Refresh()
+setup1 = system2.GetContainer(ComponentName="Setup")
+setup1.Edit()
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit(IsSpaceClaimGeometry=True)
+model2 = system2.GetContainer(ComponentName="Model")
+model2.Exit()
+geometry1.Exit()
+setup1.Edit()
+model2.Exit()
+geometry1.SetFile(FilePath=GetAbsoluteUserPathName("AMM2/MVP-1/Acoustic simulation/Unit cell simulation_files/dp0/SYS/DM/250Hz-negative-analysis.scdocx"))
+modelComponent1.Refresh()
+model2.Edit()
+modelComponent2 = system1.GetComponent(Name="Model")
+modelComponent2.Refresh()
+model2.Exit()
+setupComponent2 = system1.GetComponent(Name="Setup")
+setupComponent2.Refresh()
+setup2 = system1.GetContainer(ComponentName="Setup")
+setup2.Edit()
+system2.Delete()
+system3 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+geometryComponent3 = system3.GetComponent(Name="Geometry")
+geometryComponent3.ReplaceWithShare(
+    TargetSystem=system3,
+    ComponentToShare=geometryComponent2,
+    SourceSystem=system1)
+modelComponent3 = system3.GetComponent(Name="Model")
+modelComponent3.Refresh()
+setupComponent3 = system3.GetComponent(Name="Setup")
+setupComponent3.Refresh()
+setup3 = system3.GetContainer(ComponentName="Setup")
+setup3.Edit()
+model3 = system3.GetContainer(ComponentName="Model")
+model3.Exit()
+geometry1.Edit(IsSpaceClaimGeometry=True)
+geometryComponent2.Update(AllDependencies=True)
+geometry1.Exit()
+modelComponent3.Refresh()
+setupComponent3.Refresh()
+setup3.Edit()
+model3.Exit()
+system3.Delete()
+system4 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+geometryComponent4 = system4.GetComponent(Name="Geometry")
+geometryComponent4.ReplaceWithShare(
+    TargetSystem=system4,
+    ComponentToShare=geometryComponent2,
+    SourceSystem=system1)
+modelComponent4 = system4.GetComponent(Name="Model")
+modelComponent4.Refresh()
+setupComponent4 = system4.GetComponent(Name="Setup")
+setupComponent4.Refresh()
+setup4 = system4.GetContainer(ComponentName="Setup")
+setup4.Edit()
+geometry1.Edit(IsSpaceClaimGeometry=True)
+model4 = system4.GetContainer(ComponentName="Model")
+model4.Exit()
+geometry1.Exit()
+modelComponent4.Refresh()
+setupComponent4.Refresh()
+setup4.Edit()
+geometry1.Edit(IsSpaceClaimGeometry=True)
+system4.Delete()
+model1.Exit()
+modelComponent2.Refresh()
+setupComponent2.Refresh()
+setup2.Edit()
+model1.Exit()
+system5 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+geometryComponent5 = system5.GetComponent(Name="Geometry")
+geometryComponent5.ReplaceWithShare(
+    TargetSystem=system5,
+    ComponentToShare=geometryComponent2,
+    SourceSystem=system1)
+modelComponent5 = system5.GetComponent(Name="Model")
+modelComponent5.Refresh()
+setupComponent5 = system5.GetComponent(Name="Setup")
+setupComponent5.Refresh()
+setup5 = system5.GetContainer(ComponentName="Setup")
+setup5.Edit()
+Save(Overwrite=True)
+geometry1.Exit()
